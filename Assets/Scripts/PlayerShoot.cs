@@ -12,7 +12,7 @@ public class PlayerShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pSys.Stop();
+        pSys.Play();
     }
 
     // Update is called once per frame
@@ -20,7 +20,12 @@ public class PlayerShoot : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            pSys.Emit(1);
+        }
+        if(Input.GetMouseButton(0))
+        {
             pSys.Play();
+            pSys.emissionRate = 10f;
         }
         if (Input.GetMouseButtonUp(0))
         {
