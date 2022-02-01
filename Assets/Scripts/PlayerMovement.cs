@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ang += 360;
         }
-        print(ang);
+        //print(ang);
         arm.transform.eulerAngles = new Vector3(0, 0, ang); 
     }
 
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.Space)) { return; }
         
-        print("DASHHHHH");
+        //print("DASHHHHH");
         rb.AddForce(rb.velocity * dashSpeed);
     }
 

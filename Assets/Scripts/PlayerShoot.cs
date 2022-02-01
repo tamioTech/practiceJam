@@ -9,6 +9,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] GameObject pObj;
     [SerializeField] Transform gunPos;
 
+    int gunSelect = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,18 +20,66 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        GunSelection();
+        Pistol();
+        MachineGun();
+    }
+
+    private void Pistol()
+    {
+        if (gunSelect == 1)
         {
-            pSys.Emit(1);
+            if (Input.GetMouseButtonDown(0))
+            {
+                pSys.Play();
+                pSys.Emit(1);
+            }
+            if (Input.GetMouseButton(0))
+            {
+                //nothing yet.
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                pSys.emissionRate = 1f;
+                pSys.Stop();
+            }
+
         }
-        if(Input.GetMouseButton(0))
+    }
+
+    private void MachineGun()
+    {
+        if (gunSelect == 2)
         {
-            pSys.Play();
-            pSys.emissionRate = 10f;
+            if (Input.GetMouseButtonDown(0))
+            {
+                pSys.Play();
+                pSys.Emit(1);
+            }
+            if (Input.GetMouseButton(0))
+            {
+                pSys.Play();
+                pSys.emissionRate = 10f;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                pSys.emissionRate = 1f;
+                pSys.Stop();
+            }
+
         }
-        if (Input.GetMouseButtonUp(0))
+    }
+
+    private void GunSelection()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            pSys.Stop();
+            gunSelect++;
+            print($"gunSelect {gunSelect}");
+            if (gunSelect > 2)
+            {
+                gunSelect = 0;
+            }
         }
     }
 }
