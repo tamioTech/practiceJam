@@ -10,10 +10,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float xMaxSpeed = 10f;
     [SerializeField] float yMaxSpeed = 10f;
     [SerializeField] float dashSpeed = 2f;
+    [SerializeField] Vector3 crosshairOffset;
+    [SerializeField] Transform arm;
 
     float lerpTime = 1f;
     Vector3 distFromPlayer;
     Vector3 dfpNorm;
+    float ang;
 
 
     // Start is called before the first frame update
@@ -27,20 +30,22 @@ public class PlayerMovement : MonoBehaviour
     {
         InputHandler();
         Dash();
-
-        //print(MousePosition());
-
-        distFromPlayer = MousePosition() - rb.transform.position;
-        dfpNorm = distFromPlayer.normalized;
-        print(distFromPlayer);
-
-        crosshair.position = rb.transform.position + dfpNorm;
-
+        CrosshairPosition();
+        ang = Mathf.Atan2(dfpNorm.y, dfpNorm.x) * Mathf.Rad2Deg;
+        if(ang<0)
+        {
+            ang += 360;
+        }
+        print(ang);
+        arm.transform.eulerAngles = new Vector3(0, 0, ang); 
     }
 
-    private void OnDrawGizmos()
+    private void CrosshairPosition()
     {
-        
+        distFromPlayer = MousePosition() - rb.transform.position;
+        dfpNorm = distFromPlayer.normalized;
+        //print(dfpNorm);
+        crosshair.position = rb.transform.position + dfpNorm + crosshairOffset;
     }
 
     private static Vector3 MousePosition()
