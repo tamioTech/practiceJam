@@ -5,16 +5,26 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
 
-    [SerializeField] ParticleSystem bullet;
+    [SerializeField] ParticleSystem pSys;
+    [SerializeField] GameObject pObj;
+    [SerializeField] Transform gunPos;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        pSys.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetMouseButtonDown(0))
+        {
+            pSys.Play();
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            pSys.Stop();
+        }
     }
 }
