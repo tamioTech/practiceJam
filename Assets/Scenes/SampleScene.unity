@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 569135436}
   - component: {fileID: 569135435}
   m_Layer: 5
-  m_Name: FireBlaster
+  m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -870,6 +870,9 @@ MonoBehaviour:
   pSys: {fileID: 7653350008441659707}
   pObj: {fileID: 7653350008441659710}
   gunPos: {fileID: 1757952181}
+  pistolHUD: {fileID: 1202336531}
+  machineGunHUD: {fileID: 1907772278}
+  fireballHUD: {fileID: 569135433}
 --- !u!1 &1041458368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,7 +2397,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3411060437682294585, guid: e2d9907b69e55405f8fc3e4c2b25b4bc, type: 3}
       propertyPath: m_Name
-      value: FireBlaster
+      value: Fireball
       objectReference: {fileID: 0}
     - target: {fileID: 3411060437682294586, guid: e2d9907b69e55405f8fc3e4c2b25b4bc, type: 3}
       propertyPath: m_RootOrder
