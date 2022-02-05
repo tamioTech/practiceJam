@@ -53,7 +53,10 @@ public class PlayerShoot : MonoBehaviour
     private void Pistol()
     {
         if (gunSelect != 1) { return; }
-        fb = fb100;
+        pistolHUD.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        machineGunHUD.GetComponent<Image>().color = new Color(1f, 1f, 1f, .3f);
+        fireballHUD.GetComponent<Image>().color = new Color(1f, 1f, 1f, .3f);
+
         if (Input.GetMouseButtonDown(0))
         {
             pSys.Play();
@@ -74,9 +77,13 @@ public class PlayerShoot : MonoBehaviour
 
     private void MachineGun()
     {
-        if (gunSelect == 2)
-        {
-            if (Input.GetMouseButton(0))
+        if (gunSelect != 2) { return; }
+
+        pistolHUD.GetComponent<Image>().color = new Color(1f, 1f, 1f, .3f);
+        machineGunHUD.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        fireballHUD.GetComponent<Image>().color = new Color(1f, 1f, 1f, .3f);
+
+        if (Input.GetMouseButton(0))
             {
                 pSys.emissionRate = 10f;
                 pSys.Play();
@@ -90,14 +97,20 @@ public class PlayerShoot : MonoBehaviour
                 pSys.emissionRate = 1f;
                 pSys.Stop();
             }
+        
 
-        }
+        
     }
 
     private void Fireball()
     {
         print(gunSelect);
         if(gunSelect != 3) { return; }
+
+        pistolHUD.GetComponent<Image>().color = new Color(1f, 1f, 1f, .3f);
+        machineGunHUD.GetComponent<Image>().color = new Color(1f, 1f, 1f, .3f);
+        fireballHUD.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+
         print("gun3");
         if (Input.GetMouseButtonDown(0))
         {
